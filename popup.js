@@ -21,9 +21,7 @@ class JstrisCompanionPopup {
   populateForm() {
     const _this = this;
     chrome.storage.sync.get(this.keys, (result) => {
-      console.log(result);
       _this.keys.forEach((key) => {
-        console.log(key, _this[key], result[key]);
         _this[key].value = result[key];
       });
     });

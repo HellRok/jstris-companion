@@ -1,17 +1,15 @@
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({
-    skin: null,
-    ghostSkin: null,
-    background: null,
-  });
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: { hostEquals: 'jstris.jezevec10.com' },
-      })
-      ],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
+  const keys = ['skin', 'skinPixels', 'ghost', 'ghostPixels', 'background',
+    'left', 'right', 'soft', 'hard', 'rotateLeft', 'rotateRight',
+    'rotate180', 'hold', 'customCss', 'customJs'];
+
+  chrome.storage.sync.get(keys, (result) => {
+    let opts = {}
+    keys.forEach((key) => {
+      if (result[key] === undefined) {
+        opts[key] = '';
+      }
+      chrome.storage.sync.set(opts);
+    });
   });
 });
-
