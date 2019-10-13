@@ -6,6 +6,5 @@ own CSS/JS!
 
 ## Todo
 
-* Import/export settings
 * Presets
 * Input display: https://greasyfork.org/en/scripts/387995-keyboard-display-script/code

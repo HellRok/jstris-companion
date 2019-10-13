@@ -10,6 +10,10 @@
         min-width: 400px;
       }
 
+      textarea {
+        min-height: 11rem;
+      }
+
       nav, fieldset {
         padding: 10px;
       }
@@ -25,6 +29,10 @@
         width: 100%;
       }
 
+      nav button {
+        margin-bottom: 0 !important;
+      }
+
       #save {
         margin-bottom: 0;
       }
@@ -37,21 +45,36 @@
         display: none;
       }
 
-      #restartInfo {
+      .info, .warning {
         text-align: center;
         padding: 0.66em 1em;
         margin-top: 16px;
         border: 1px solid transparent;
+      }
+
+      .warning {
         color: #8a6d3b;
         background-color: #ece7cd;
         border-color: #ddd6b2;
+      }
+
+      .info {
+        color: #31708f;
+        background-color: #bbdbeb;
+        border-color: #a8cde0;
+      }
+
+      #exportData {
+        margin-bottom: 0;
       }
     </style>
     <script src="popup.js"></script>
   </head>
   <body>
     <nav>
-      <button id="save" class="button primary">Save</button>
+      <button id="export" class="button button-outline">Export</button>
+      <button id="import" class="button button-outline">Import</button>
+      <button id="save" class="button">Save</button>
     </nav>
 
     <fieldset>
@@ -60,8 +83,18 @@
         Customisation Database
       </a>
 
-      <div id="restartInfo" class="hide">
-        Refresh Jstris to see your changes
+      <div id="restartInfo" class="hide warning">
+        Refresh Jstris to see your changes.
+      </div>
+
+      <div id="exportContainer" class="hide info">
+        Copy and paste the below somewhere to save or share this theme.
+        <textarea id="exportData"></textarea>
+      </div>
+
+      <div id="importContainer" class="hide info">
+        Paste the theme here and it'll apply.
+        <textarea id="importData"></textarea>
       </div>
 
       <h2>Appearance</h2>
